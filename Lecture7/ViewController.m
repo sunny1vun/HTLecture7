@@ -27,6 +27,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    
     VCViewController *first =[VCViewController new];
     first.view = [[UIView alloc] initWithFrame:self.view.frame];
     [first.view setBackgroundColor:[UIColor greenColor]];
@@ -38,10 +39,10 @@
     //title используется как обычный лейбл, туда можно запилить и картинку и что угодно
     first.title= @"First";
     
-    NSLog(@"%@", self.presentedViewController);
-    NSLog(@"%@", first.presentedViewController);
-    NSLog(@"%@", self.presentingViewController);
-    NSLog(@"%@", first.presentingViewController);
+//    NSLog(@"%@", self.presentedViewController);
+//    NSLog(@"%@", first.presentedViewController);
+//    NSLog(@"%@", self.presentingViewController);
+//    NSLog(@"%@", first.presentingViewController);
 
     UINavigationController *nav = [[UINavigationController alloc]
                                    initWithRootViewController:first];
@@ -54,10 +55,14 @@
     
     [nav setToolbarHidden:NO animated:YES];
     
-    UIBarButtonItem* editButton = [[UIBarButtonItem alloc] initWithTitle:@"ToolBarButton" style:UIBarButtonItemStylePlain target:nav action:@selector(someSelector)];
-    [first setToolbarItems:@[editButton] animated:YES];
-
+    //Для параметра action селектор можно попробовать вернуть через блок который в качестве возвращаемого типа данных будет возвращать SEL а в теле блока будет выполнять то что мне нужно
+    UIBarButtonItem* dropButton = [[UIBarButtonItem alloc] initWithTitle:@"ToolBarButton" style:UIBarButtonItemStylePlain target:first action:@selector(someDrop)];
     
+    UIBarButtonItem* colorButton = [[UIBarButtonItem alloc] initWithTitle:@"ColorBarButton" style:UIBarButtonItemStylePlain target:first action:@selector(someColor)];
+    
+    //Поещаем кнопку ToolBarButton и ColorBarButton вниз т.е. ToolBar
+    [first setToolbarItems:@[dropButton, colorButton] animated:YES];
+
     NSLog(@"%@", nav.viewControllers);
 }
 

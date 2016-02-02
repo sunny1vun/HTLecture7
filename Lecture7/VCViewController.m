@@ -17,32 +17,33 @@
 
 -(void)someColor{
     
+    [self.view setBackgroundColor: [UIColor random]];
+    
 }
 
 -(void)someDrop{
     
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
 }
 
 -(void)someAction{
-    
+
     VCViewController *some =[VCViewController new];
     some.view = [[UIView alloc] initWithFrame:self.view.frame];
     
     [some.view setBackgroundColor: [UIColor random]];
     
-//    NSString *title = [NSString stringWithFormat:@"Some %i", (int)[self.navigationController.viewControllers count]];
-    
-//    some.title = title;
-    
-    UIBarButtonItem *rightSome = [[UIBarButtonItem alloc] initWithTitle: @"NextSome"
-                                                                  style:UIBarButtonItemStylePlain target:self action:@selector(someAction)];
-    UIBarButtonItem *dropSome = [[UIBarButtonItem alloc] initWithTitle: @"NextSome"
-                                                                  style:UIBarButtonItemStylePlain target:self action:@selector(someAction)];
-    UIBarButtonItem *colorSome = [[UIBarButtonItem alloc] initWithTitle:@"NextSome"
-                                                                  style:UIBarButtonItemStylePlain target:self action:@selector(random)];
+    UIBarButtonItem *rightSome = [[UIBarButtonItem alloc] initWithTitle: @"NextSome"                                                                  style:UIBarButtonItemStylePlain target:self action:@selector(someAction)];
     
     some.navigationItem.rightBarButtonItem = rightSome;
     
+    UIBarButtonItem* dropButton = [[UIBarButtonItem alloc] initWithTitle:@"ToolBarButton" style:UIBarButtonItemStylePlain target:some action:@selector(someDrop)];
+    
+    UIBarButtonItem* colorButton = [[UIBarButtonItem alloc] initWithTitle:@"ColorBarButton" style:UIBarButtonItemStylePlain target:some action:@selector(someColor)];
+    
+    //Поещаем кнопку ToolBarButton и ColorBarButton вниз т.е. ToolBar
+    [some setToolbarItems:@[dropButton, colorButton] animated:YES];
     // Пуш проходит справа на лево на экране.
     //В нсЛоге выведет только первый элемент навКонтроллера потому что пуш добавится после выполнения скоупа=> После нсЛога
     
@@ -62,7 +63,8 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-    self.title= [NSString stringWithFormat:@"Some %i", (int)[self.navigationController.viewControllers count]];
+    if(([self.navigationController.viewControllers count]>1)== YES)
+        self.title= [NSString stringWithFormat:@"Some %i", (int)[self.navigationController.viewControllers count]];
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
@@ -81,6 +83,27 @@
 
 }
 
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+-(void)willAnimateFirstHalfOfRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+}
+
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+}
+
+-(void)didAnimateFirstHalfOfRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
 
 /*
 #pragma mark - Navigation
