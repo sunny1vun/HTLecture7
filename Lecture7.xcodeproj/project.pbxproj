@@ -113,12 +113,12 @@
 				83EBB3C71C60C05C007E3722 /* ViewController.m */,
 				83EBB3F31C60C099007E3722 /* VCViewController.h */,
 				83EBB3F41C60C099007E3722 /* VCViewController.m */,
+				83EBB3F61C6100E1007E3722 /* UIColor+RandColor.h */,
+				83EBB3F71C6100E1007E3722 /* UIColor+RandColor.m */,
 				83EBB3C91C60C05C007E3722 /* Main.storyboard */,
 				83EBB3CC1C60C05C007E3722 /* Assets.xcassets */,
 				83EBB3CE1C60C05C007E3722 /* LaunchScreen.storyboard */,
 				83EBB3D11C60C05C007E3722 /* Info.plist */,
-				83EBB3F61C6100E1007E3722 /* UIColor+RandColor.h */,
-				83EBB3F71C6100E1007E3722 /* UIColor+RandColor.m */,
 				83EBB3C01C60C05C007E3722 /* Supporting Files */,
 			);
 			path = Lecture7;
@@ -510,6 +510,7 @@
 				83EBB3EC1C60C05D007E3722 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		83EBB3ED1C60C05D007E3722 /* Build configuration list for PBXNativeTarget "Lecture7Tests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +519,7 @@
 				83EBB3EF1C60C05D007E3722 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		83EBB3F01C60C05D007E3722 /* Build configuration list for PBXNativeTarget "Lecture7UITests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +528,7 @@
 				83EBB3F21C60C05D007E3722 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

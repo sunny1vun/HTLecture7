@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface VCViewController : UIViewController
--(void)someAction;
--(void)someColor;
--(void)someDrop;
+-(void)makeNewView;
+-(void)changeToRandomColor;
+-(void)dropToRoot;
 
 @end

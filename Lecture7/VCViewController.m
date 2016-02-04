@@ -15,39 +15,41 @@
 
 @implementation VCViewController
 
--(void)someColor{
+-(void)changeToRandomColor{
     
     [self.view setBackgroundColor: [UIColor random]];
     
 }
 
--(void)someDrop{
+-(void)dropToRoot{
     
     [self.navigationController popToRootViewControllerAnimated:YES];
     
 }
 
--(void)someAction{
-
-    VCViewController *some =[VCViewController new];
-    some.view = [[UIView alloc] initWithFrame:self.view.frame];
+-(void)makeNewView{
+//    UIPickerView
+//    UITextView
     
-    [some.view setBackgroundColor: [UIColor random]];
+    VCViewController *newVC =[VCViewController new];
+    newVC.view = [[UIView alloc] initWithFrame:self.view.frame];
     
-    UIBarButtonItem *rightSome = [[UIBarButtonItem alloc] initWithTitle: @"NextSome"                                                                  style:UIBarButtonItemStylePlain target:self action:@selector(someAction)];
+    [newVC.view setBackgroundColor: [UIColor random]];
     
-    some.navigationItem.rightBarButtonItem = rightSome;
+    UIBarButtonItem *rightSome = [[UIBarButtonItem alloc] initWithTitle: @"Next_View"                                                                  style:UIBarButtonItemStylePlain target:self action:@selector(makeNewView)];
     
-    UIBarButtonItem* dropButton = [[UIBarButtonItem alloc] initWithTitle:@"ToolBarButton" style:UIBarButtonItemStylePlain target:some action:@selector(someDrop)];
+    newVC.navigationItem.rightBarButtonItem = rightSome;
     
-    UIBarButtonItem* colorButton = [[UIBarButtonItem alloc] initWithTitle:@"ColorBarButton" style:UIBarButtonItemStylePlain target:some action:@selector(someColor)];
+    UIBarButtonItem* dropButton = [[UIBarButtonItem alloc] initWithTitle:@"Back_to_Root" style:UIBarButtonItemStylePlain target:newVC action:@selector(dropToRoot)];
+    
+    UIBarButtonItem* colorButton = [[UIBarButtonItem alloc] initWithTitle:@"Change_Color" style:UIBarButtonItemStylePlain target:newVC action:@selector(changeToRandomColor)];
     
     //Поещаем кнопку ToolBarButton и ColorBarButton вниз т.е. ToolBar
-    [some setToolbarItems:@[dropButton, colorButton] animated:YES];
+    [newVC setToolbarItems:@[dropButton, colorButton] animated:YES];
     // Пуш проходит справа на лево на экране.
     //В нсЛоге выведет только первый элемент навКонтроллера потому что пуш добавится после выполнения скоупа=> После нсЛога
     
-    [self.navigationController pushViewController:some animated:YES];
+    [self.navigationController pushViewController:newVC animated:YES];
 }
 
 -(void)viewWillLoad:(BOOL)animated{
@@ -64,7 +66,7 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     if(([self.navigationController.viewControllers count]>1)== YES)
-        self.title= [NSString stringWithFormat:@"Some %i", (int)[self.navigationController.viewControllers count]];
+        self.title= [NSString stringWithFormat:@"View %i", (int)[self.navigationController.viewControllers count]];
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
